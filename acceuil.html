@@ -5,11 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>leboncoincoin</title>
   <link rel="stylesheet" href="accueil.css">
+  <style>
+    /* Styles pour le menu déroulant */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #ddd;
+    }
+
+    .dropbtn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>leboncoincoin</h1>
-    <div class="duck">🦆</div>
+    <div class="duck">
+      <img src="C:\Users\alexi\Downloads\leboncoincoin v1 ducky.png" alt="Duck Logo" style="height: 50px;">
+    </div>
   </header>
 
   <div class="top-bar">
@@ -17,18 +62,39 @@
       <input type="text" placeholder="Search" />
     </div>
     <div class="top-icons">
-      <button class="icon-button" title="Messages">💬</button>
-      <button class="icon-button" title="Favoris">❤️</button>
-      <button class="icon-button" title="Compte">👤</button>
+      <button title="Messages">
+        <img src="C:\Users\alexi\Downloads\message.png" alt="Messages" style="height: 24px;">
+      </button>
+      <button class="icon-button" title="Favoris">
+        <img src="C:\Users\alexi\Downloads\favori.jpg" alt="Favoris" style="height: 24px;">
+      </button>
+      <!-- Menu déroulant pour Compte -->
+      <div class="dropdown">
+        <button class="dropbtn" title="Compte">
+          <img src="C:\Users\alexi\Downloads\compte.png" alt="Compte" style="height: 24px;">
+        </button>
+        <div class="dropdown-content">
+          <a href="connexion.html">Connexion</a>
+          <a href="inscription.html">Inscription</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <h2>Categories</h2>
   <div class="categories">
-    <div class="category">🏠<br>Real Estate</div>
-    <div class="category">🚗<br>Cars</div>
-    <div class="category">💬<br>Favorites</div>
-    <div class="category">📱<br>Electronics</div>
+    <div class="category">
+      <img src="icons/real-estate.png" alt="Real Estate" style="height: 24px;"><br>Real Estate
+    </div>
+    <div class="category">
+      <img src="icons/cars.png" alt="Cars" style="height: 24px;"><br>Cars
+    </div>
+    <div class="category">
+      <img src="icons/favorites.png" alt="Favorites" style="height: 24px;"><br>Favorites
+    </div>
+    <div class="category">
+      <img src="icons/electronics.png" alt="Electronics" style="height: 24px;"><br>Electronics
+    </div>
   </div>
 
   <h2>Featured Listings</h2>
@@ -55,9 +121,15 @@
       <a href="#">FAQ</a>
     </div>
     <div class="socials">
-      <a href="#" title="Facebook">📘</a>
-      <a href="#" title="Instagram">📸</a>
-      <a href="#" title="TikTok">🎵</a>
+      <a href="#" title="Facebook">
+        <img src="icons/facebook.png" alt="Facebook" style="height: 24px;">
+      </a>
+      <a href="#" title="Instagram">
+        <img src="icons/instagram.png" alt="Instagram" style="height: 24px;">
+      </a>
+      <a href="#" title="TikTok">
+        <img src="icons/tiktok.png" alt="TikTok" style="height: 24px;">
+      </a>
     </div>
   </footer>
 
