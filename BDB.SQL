@@ -1,7 +1,7 @@
 -- Script SQL pour la base de données le_boncoincoin
 
-CREATE DATABASE IF NOT EXISTS le_boncoincoin;
-USE le_boncoincoin;
+CREATE DATABASE IF NOT EXISTS leboncoincoin;
+USE leboncoincoin;
 
 -- Table des utilisateurs
 CREATE TABLE IF NOT EXISTS Utilisateurs (
@@ -13,8 +13,29 @@ CREATE TABLE IF NOT EXISTS Utilisateurs (
     role ENUM('consommateur', 'administrateur') DEFAULT 'consommateur',
     jeton_reinitialisation VARCHAR(255),
     expiration_jeton DATETIME,
-    cree_le DATETIME DEFAULT CURRENT_TIMESTAMP
+    cree_le DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_admin TINYINT(1) DEFAULT 0
 );
+
+-- Création de la table utilisateurs (nouvelle version)
+CREATE TABLE IF NOT EXISTS utilisateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prenom VARCHAR(100) NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    date_naissance DATE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    is_admin TINYINT(1) DEFAULT 0
+);
+
+-- Insertion de comptes de test
+INSERT INTO utilisateurs (prenom, nom, email, date_naissance, mot_de_passe, is_admin)
+VALUES ('Jean', 'Client', 'user@test.com', '2000-01-01', 
+        '$2y$10$FE6xSNgZr92pZslBQuI.vOJbR7JKYjxV21gD/CUnq9XQOlF/6IbzK', 0);
+
+INSERT INTO utilisateurs (prenom, nom, email, date_naissance, mot_de_passe, is_admin)
+VALUES ('Admin', 'Principal', 'admin@test.com', '1990-01-01', 
+        '$2y$10$yjEB7rcqu4aQqPj6O7UvCeOcRrKiFbAhXb0Q4CE2y8bc6M08s0Dxq', 1);
 
 -- Table des catégories
 CREATE TABLE IF NOT EXISTS Categories (

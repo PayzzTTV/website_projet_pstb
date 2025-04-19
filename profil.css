@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #2196f3;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h2 {
+    color: #2196f3;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .annonce-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .annonce-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fefefe;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .annonce-info {
+    flex: 1 1 70%;
+  }
+  
+  .annonce-info h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .annonce-info p {
+    margin: 0.5rem 0;
+    color: #555;
+  }
+  
+  .annonce-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-supprimer {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-supprimer:hover {
+    background-color: #c62828;
+  }
+  

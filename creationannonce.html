@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer une annonce</title>
+  <link rel="stylesheet" href="accueil.css">
+  <style>
+    .form-container {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #2196f3;
+    }
+
+    form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    form input[type="file"] {
+      margin-top: 10px;
+    }
+
+    form button {
+      margin-top: 2rem;
+      width: 100%;
+      padding: 10px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0e75c9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>leboncoincoin</h1>
+    <div class="duck">
+      <img src="C:\Users\alexi\Downloads\leboncoincoin v1 ducky.png" alt="Duck Logo" style="height: 50px;">
+    </div>
+  </header>
+
+  <div class="form-container">
+    <h2>Créer une nouvelle annonce</h2>
+    <form action="ajouter_annonce.php" method="post" enctype="multipart/form-data">
+      <label for="titre">Titre de l'annonce :</label>
+      <input type="text" id="titre" name="titre" required>
+
+      <label for="categorie">Catégorie :</label>
+      <select id="categorie" name="categorie" required>
+        <option value="">-- Choisir une catégorie --</option>
+        <!-- Catégories principales -->
+        <optgroup label="Véhicules">
+          <option value="voitures">Voitures</option>
+          <option value="motos">Motos / Scooters</option>
+          <option value="utilitaires">Utilitaires</option>
+          <option value="caravaning">Caravaning</option>
+          <option value="equipements_auto_moto">Équipements auto/moto</option>
+          <option value="nautisme">Nautisme</option>
+        </optgroup>
+        <optgroup label="Immobilier">
+          <option value="vente_location">Vente / Location</option>
+          <option value="colocations">Colocations</option>
+          <option value="bureaux_commerces">Bureaux & Commerces</option>
+          <option value="garages_parkings">Garages / Parkings</option>
+          <option value="terrains">Terrains</option>
+        </optgroup>
+        <optgroup label="Multimédia">
+          <option value="telephones">Téléphones</option>
+          <option value="ordinateurs">Ordinateurs</option>
+          <option value="consoles_jeux_video">Consoles & Jeux vidéo</option>
+          <option value="tv_son_photo">TV / Son / Photo</option>
+          <option value="accessoires_informatiques">Accessoires informatiques</option>
+        </optgroup>
+        <optgroup label="Maison">
+          <option value="meubles">Meubles</option>
+          <option value="electromenager">Électroménager</option>
+          <option value="decoration">Décoration</option>
+          <option value="vaisselle">Vaisselle</option>
+          <option value="linge_maison">Linge de maison</option>
+          <option value="jardinage_bricolage">Jardinage / Bricolage</option>
+        </optgroup>
+        <optgroup label="Mode">
+          <option value="vetements">Vêtements (Homme / Femme / Enfant)</option>
+          <option value="chaussures">Chaussures</option>
+          <option value="accessoires_sacs">Accessoires & Sacs</option>
+          <option value="montres_bijoux">Montres / Bijoux</option>
+        </optgroup>
+        <optgroup label="Loisirs">
+          <option value="livres">Livres</option>
+          <option value="cd_vinyles_dvd">CD / Vinyles / DVD</option>
+          <option value="instruments_musique">Instruments de musique</option>
+          <option value="sports_fitness">Sports / Fitness</option>
+          <option value="jeux_jouets">Jeux / Jouets</option>
+          <option value="collection">Collection</option>
+        </optgroup>
+        <optgroup label="Matériel professionnel">
+          <option value="btp_chantier">BTP / Chantier</option>
+          <option value="restauration">Restauration</option>
+          <option value="agriculture">Agriculture</option>
+          <option value="commerces_marches">Commerces & Marchés</option>
+          <option value="medical_paramedical">Médical / Paramédical</option>
+        </optgroup>
+        <optgroup label="Emploi & Services">
+          <option value="offres_emploi">Offres d’emploi</option>
+          <option value="services_personne">Services à la personne</option>
+          <option value="cours_particuliers">Cours particuliers</option>
+          <option value="demenagement">Déménagement</option>
+          <option value="reparations_bricolage">Réparations / Bricolage</option>
+        </optgroup>
+        <optgroup label="Animaux">
+          <option value="chiens_chats">Chiens / Chats</option>
+          <option value="nac_oiseaux_poissons">NAC / Oiseaux / Poissons</option>
+          <option value="equipement_accessoires">Équipement / Accessoires</option>
+          <option value="equides_betail">Équidés / Bétail</option>
+        </optgroup>
+        <optgroup label="Événements & Billetterie">
+          <option value="concerts">Concerts</option>
+          <option value="festivals">Festivals</option>
+          <option value="sports">Sports</option>
+          <option value="loisirs_parc">Loisirs / Parc</option>
+        </optgroup>
+      </select>
+
+      <label for="prix">Prix (€) :</label>
+      <input type="number" id="prix" name="prix" required>
+
+      <label for="ville">Ville :</label>
+      <input type="text" id="ville" name="ville" required>
+
+      <label for="description">Description :</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="image">Photo de l'article :</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+
+      <button type="submit">Publier l'annonce</button>
+    </form>
+  </div>
+</body>
+</html>

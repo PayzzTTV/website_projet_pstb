@@ -84,11 +84,22 @@
     input[type="submit"]:hover {
       background-color: #4cae4c;
     }
+    .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .forgot-password a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header class="site-header">
+    <header class="site-header"> 
       <h1>leboncoincoin</h1>
       <img src="logo.png" alt="Logo du site">
     </header>
@@ -96,7 +107,6 @@
     <form action="inscription.php" method="post">
       <label for="prenom">Prénom :</label>
       <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
-      
       
       <label for="nom">Nom :</label>
       <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
@@ -129,6 +139,9 @@
       
       <input type="submit" value="S'inscrire">
     </form>
+    <div class="forgot-password" style="text-align: center; margin-top: 10px;">
+      <a href="connexion.html">Déjà inscrit ? Connectez-vous</a>
+    </div>
   </div>
 
   <script>
