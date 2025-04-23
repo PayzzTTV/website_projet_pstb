@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Like Animation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    .like-btn {
+      font-size: 80px;
+      color: #aaa;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .like-btn.liked {
+      color: #e0245e;
+      transform: scale(1.2);
+      animation: pop 0.3s ease forwards;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.4);
+      }
+      100% {
+        transform: scale(1.2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="like-btn" id="heart">❤</div>
+
+  <script>
+    const heart = document.getElementById('heart');
+    heart.addEventListener('click', () => {
+      heart.classList.toggle('liked');
+    });
+  </script>
+</body>
+</html>

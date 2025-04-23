@@ -1,67 +1,204 @@
+<?php
+// Démarrage de la session pour gérer les données utilisateur
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=width=device-width, initial-scale=1.0"/>
   <title>leboncoincoin</title>
+  <!-- Lien vers le fichier CSS pour le style de la page -->
   <link rel="stylesheet" href="accueil.css">
+  <style>
+    /* Styles pour le menu déroulant */
+    .dropdown {
+      position: relative; /* Position relative pour contenir les éléments absolus */
+      display: inline-block; /* Affichage en ligne */
+    }
+
+    .dropdown-content {
+      display: none; /* Masque le contenu par défaut */
+      position: absolute; /* Position absolue par rapport au parent */
+      background-color: #fff; /* Couleur de fond blanche */
+      min-width: 150px; /* Largeur minimale */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet visuel */
+      z-index: 1; /* Place le contenu au-dessus des autres éléments */
+      border-radius: 5px; /* Coins arrondis */
+    }
+
+    .dropdown-content a {
+      color: #333; /* Couleur du texte */
+      padding: 10px 15px; /* Espacement interne */
+      text-decoration: none; /* Supprime le soulignement */
+      display: block; /* Affichage en bloc */
+      font-size: 14px; /* Taille du texte */
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1; /* Change la couleur de fond au survol */
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block; /* Affiche le contenu au survol */
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #ddd; /* Change la couleur du bouton au survol */
+    }
+
+    .dropbtn {
+      background-color: transparent; /* Fond transparent */
+      border: none; /* Supprime les bordures */
+      cursor: pointer; /* Change le curseur en pointeur */
+    }
+  </style>
+  <script>
+    // Fonction pour gérer les "likes" sur les annonces
+    function toggleLike(element) {
+      element.classList.toggle("liked"); // Ajoute ou supprime la classe "liked"
+      const title = element.closest(".card").querySelector("h3").innerText; // Récupère le titre de l'annonce
+
+      let liked = JSON.parse(localStorage.getItem("likedAnnonces") || "[]"); // Récupère les annonces likées depuis le stockage local
+
+      if (element.classList.contains("liked")) {
+        if (!liked.includes(title)) liked.push(title); // Ajoute l'annonce si elle n'est pas déjà likée
+      } else {
+        liked = liked.filter(item => item !== title); // Supprime l'annonce des likes
+      }
+
+      localStorage.setItem("likedAnnonces", JSON.stringify(liked)); // Met à jour le stockage local
+    }
+  </script>
 </head>
 <body>
+  <!-- En-tête de la page -->
   <header>
     <h1>leboncoincoin</h1>
-    <div class="duck">🦆</div>
+    <div class="duck">
+      <!-- Logo du site -->
+      <img src="C:\Users\alexi\Downloads\leboncoincoin v1 ducky.png" alt="Duck Logo" style="height: 50px;">
+    </div>
   </header>
 
+  <!-- Barre supérieure avec barre de recherche et icônes -->
   <div class="top-bar">
     <div class="search-bar">
-      <input type="text" placeholder="Search" />
+      <input type="text" placeholder="Search" /> <!-- Barre de recherche -->
     </div>
     <div class="top-icons">
-      <button class="icon-button" title="Messages">💬</button>
-      <button class="icon-button" title="Favoris">❤️</button>
-      <button class="icon-button" title="Compte">👤</button>
+      <!-- Bouton pour les messages -->
+      <button title="Messages">
+        <img src="C:\Users\alexi\Downloads\message.png" alt="Messages" style="height: 24px;">
+      </button>
+      <!-- Bouton pour les favoris -->
+      <a href="favoris.html" class="icon-button" title="Favoris">
+        <img src="C:\Users\alexi\Downloads\favori.jpg" alt="Favoris" style="height: 24px;">
+      </a>
+      <!-- Menu déroulant pour le compte utilisateur -->
+      <div class="dropdown">
+        <button class="dropbtn" title="Compte">
+          <img src="C:\Users\alexi\Downloads\compte.png" alt="Compte" style="height: 24px;">
+        </button>
+        <div class="dropdown-content">
+          <a href="connexion-v2.html">Connexion</a> <!-- Lien vers la page de connexion -->
+          <a href="inscription.html">Inscription</a> <!-- Lien vers la page d'inscription -->
+          <a href="profil_utilisateur.php">Mon profil</a> <!-- Lien vers le profil utilisateur -->
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- Section des catégories -->
   <h2>Categories</h2>
   <div class="categories">
-    <div class="category">🏠<br>Real Estate</div>
-    <div class="category">🚗<br>Cars</div>
-    <div class="category">💬<br>Favorites</div>
-    <div class="category">📱<br>Electronics</div>
+    <div class="category">
+      <img src="C:\xampp\htdocs\sitewebproject2K25\image\real estate.png" alt="Real Estate" style="height: 24px;"><br>Real Estate
+    </div>
+    <div class="category">
+      <img src="C:\xampp\htdocs\sitewebproject2K25\image\voiture.png" alt="Cars" style="height: 24px;"><br>Cars
+    </div>
+    <div class="category">
+      <img src="icons/favorites.png" alt="Favorites" style="height: 24px;"><br>Favorites
+    </div>
+    <div class="category">
+      <img src="C:\xampp\htdocs\sitewebproject2K25\image\electronics.png" alt="Electronics" style="height: 24px;"><br>Electronics
+    </div>
   </div>
 
+  <!-- Section des annonces en vedette -->
   <h2>Featured Listings</h2>
   <div class="listings">
-    <!-- 12 annonces pour scroller -->
-    <div class="card"><img /><h3>Canapé 3 places</h3><p>€120 - Bordeaux</p></div>
-    <div class="card"><img /><h3>iPhone 13</h3><p>€650 - Paris</p></div>
-    <div class="card"><img /><h3>Maison de campagne</h3><p>€180.000 - Limoges</p></div>
-    <div class="card"><img /><h3>PS5 + 2 manettes</h3><p>€400 - Lyon</p></div>
-    <div class="card"><img /><h3>Table basse design</h3><p>€80 - Nantes</p></div>
-    <div class="card"><img /><h3>Golf 7 GTI</h3><p>€18.000 - Lille</p></div>
-    <div class="card"><img /><h3>Samsung TV 55"</h3><p>€300 - Marseille</p></div>
-    <div class="card"><img /><h3>Ordinateur ASUS</h3><p>€450 - Toulouse</p></div>
-    <div class="card"><img /><h3>Trottinette électrique</h3><p>€220 - Nice</p></div>
-    <div class="card"><img /><h3>Armoire vintage</h3><p>€90 - Rennes</p></div>
-    <div class="card"><img /><h3>Appareil photo Canon</h3><p>€600 - Dijon</p></div>
-    <div class="card"><img /><h3>Location studio</h3><p>€750/mois - Strasbourg</p></div>
+    <!-- Exemple d'une carte d'annonce -->
+    <div class="card">
+      <img src="images/sample1.jpg" alt="Image de l'annonce">
+      <h3>Annonce 1</h3>
+      <p>100 € - Paris</p>
+      <p>Description de l'annonce 1.</p>
+      <div class="like-btn" onclick="toggleLike(this)">❤</div> <!-- Bouton "like" -->
+    </div>
+    <!-- Répétez pour d'autres annonces -->
+    <div class="card">
+      <img src="images/sample2.jpg" alt="Image de l'annonce">
+      <h3>Annonce 2</h3>
+      <p>200 € - Lyon</p>
+      <p>Description de l'annonce 2.</p>
+      <div class="like-btn" onclick="toggleLike(this)">❤</div>
+    </div>
+    <div class="card">
+      <img src="images/sample3.jpg" alt="Image de l'annonce">
+      <h3>Annonce 3</h3>
+      <p>300 € - Marseille</p>
+      <p>Description de l'annonce 3.</p>
+      <div class="like-btn" onclick="toggleLike(this)">❤</div>
+    </div>
+    <div class="card">
+      <img src="images/sample4.jpg" alt="Image de l'annonce">
+      <h3>Annonce 4</h3>
+      <p>400 € - Bordeaux</p>
+      <p>Description de l'annonce 4.</p>
+      <div class="like-btn" onclick="toggleLike(this)">❤</div>
+    </div>
+    <div class="card">
+      <img src="images/sample5.jpg" alt="Image de l'annonce">
+      <h3>Annonce 5</h3>
+      <p>500 € - Toulouse</p>
+      <p>Description de l'annonce 5.</p>
+      <div class="like-btn" onclick="toggleLike(this)">❤</div>
+    </div>
+    <div class="card">
+      <img src="images/sample6.jpg" alt="Image de l'annonce">
+      <h3>Annonce 6</h3>
+      <p>600 € - Nice</p>
+      <p>Description de l'annonce 6.</p>
+      <div class="like-btn" onclick="toggleLike(this)">❤</div>
+    </div>
   </div>
 
+  <!-- Pied de page -->
   <footer>
     <div class="footer-links">
-      <a href="#">À propos de nous</a>
-      <a href="#">Infos contact</a>
-      <a href="#">FAQ</a>
+      <a href="#">À propos de nous</a> <!-- Lien vers la page "À propos" -->
+      <a href="#">Infos contact</a> <!-- Lien vers la page de contact -->
+      <a href="#">FAQ</a> <!-- Lien vers la FAQ -->
     </div>
     <div class="socials">
-      <a href="#" title="Facebook">📘</a>
-      <a href="#" title="Instagram">📸</a>
-      <a href="#" title="TikTok">🎵</a>
+      <!-- Icônes des réseaux sociaux -->
+      <a href="#" title="Facebook">
+        <img src="C:\xampp\htdocs\sitewebproject2K25\image\OIP.jpg" alt="Facebook" class="social-icon">
+      </a>
+      <a href="#" title="Instagram">
+        <img src="C:\xampp\htdocs\sitewebproject2K25\image\instagram-logo-instagram-icon-transparent-free-png.webp" alt="Instagram" class="social-icon">
+      </a>
+      <a href="#" title="TikTok">
+        <img src="C:\xampp\htdocs\sitewebproject2K25\image\ti459tb67-tiktok-logo-tik-tok-logo-png-image--free-transparent-cc0-png-image.png" alt="TikTok" class="social-icon">
+      </a>
     </div>
   </footer>
 
-  <!-- Bouton flottant centré en bas -->
-  <button class="floating-button" title="Déposer une annonce">+</button>
+  <!-- Bouton flottant pour déposer une annonce -->
+  <a href="creationannonce.html" class="floating-button" title="Déposer une annonce">
+    <span>+</span>
+  </a>
 </body>
 </html>
